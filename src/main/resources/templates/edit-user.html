@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout.html">
+<head>
+    <title>Edit User</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Edit User Information</h2>
+    <form th:action="@{/accounts/admin/users/{id}/edit(id=${user.id})}" method="post">
+        <div class="mb-3">
+            <label for="accountNumber" class="form-label">Account Number</label>
+            <input type="text" class="form-control" id="accountNumber" name="accountNumber" th:value="${user.accountNumber}" required>
+        </div>
+        <div class="mb-3">
+            <label for="balance" class="form-label">Balance</label>
+            <input type="number" step="0.01" class="form-control" id="balance" name="balance" th:value="${user.balance}" required>
+        </div>
+        <div class="mb-3">
+            <label for="newPin" class="form-label">New PIN (leave blank to keep current PIN)</label>
+            <input type="password" class="form-control" id="newPin" name="newPin">
+        </div>
+        <button type="submit" class="btn btn-primary">Update User</button>
+    </form>
+</div>
+</body>
+</html>
